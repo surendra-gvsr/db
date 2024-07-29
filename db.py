@@ -26,7 +26,7 @@ df['Price'] = pd.to_numeric(df['Price'], errors='coerce') #changed to handle emp
 df['Total'] = df['Total'].replace('[\$,%-]', '', regex=True)
 df['Total'] = pd.to_numeric(df['Total'], errors='coerce') #changed to handle empty strings
 app = dash.Dash(__name__)
-
+server=app.server
 # Layout of the dashboard
 app.layout = html.Div([
     html.H1("Retailer and Location Sales Dashboard"),
