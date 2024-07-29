@@ -9,14 +9,16 @@ Original file is located at
 
 
 
-
+import os
 import dash
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 from dash import Dash, dcc, html, dash_table # import the dash module
 from dash.dependencies import Input, Output
-df = pd.read_csv("C:/Quari Ice/Excell Files/Quari.csv")
+current_dir = os.path.dirname(__file__)
+file_path = os.path.join(current_dir, 'Excell Files', 'Quari.csv')
+df = pd.read_csv("file_path")
 
 df = df[df['Area'] != 'Not Found']
 
