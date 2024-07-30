@@ -17,7 +17,8 @@ import plotly.graph_objs as go
 from dash import Dash, dcc, html, dash_table # import the dash module
 from dash.dependencies import Input, Output
 current_dir = os.path.dirname(__file__)
-file_path = os.path.join(current_dir,'Quari.csv')
+# file_path = os.path.join(current_dir,'Quari.csv')
+file_path="https://github.com/surendra-gvsr/db/blob/main/Quari.csv"
 print(file_path)
 df = pd.read_csv(file_path)
 
