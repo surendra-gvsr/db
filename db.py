@@ -29,7 +29,9 @@ df['Price'] = df['Price'].replace('[\$,%-]', '', regex=True)
 df['Price'] = pd.to_numeric(df['Price'], errors='coerce') #changed to handle empty strings
 df['Total'] = df['Total'].replace('[\$,%-]', '', regex=True)
 df['Total'] = pd.to_numeric(df['Total'], errors='coerce') #changed to handle empty strings
-app = dash.Dash(__name__)
+
+app = Dash(__name__)
+
 server=app.server
 # Layout of the dashboard
 app.layout = html.Div([
