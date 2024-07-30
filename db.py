@@ -7,31 +7,29 @@ Original file is located at
     https://colab.research.google.com/drive/1TRrqzTmiA1Ta901bxF1EddktPH4UZoRT
 """
 
-
-
 import os
 import dash
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-from dash import Dash, dcc, html, dash_table # import the dash module
+from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
-current_dir = os.path.dirname(__file__)
-# file_path = os.path.join(current_dir,'Quari.csv')
-file_path="https://github.com/surendra-gvsr/db/blob/main/Quari.csv"
-df = pd.read_csv(file_path)
 
+# Direct link to the raw CSV file on GitHub
+file_path = "https://raw.githubusercontent.com/surendra-gvsr/db/main/Quari.csv"
+df = pd.read_csv(file_path, error_bad_lines=False)
+
+# Clean and preprocess data
 df = df[df['Area'] != 'Not Found']
-
-df['Quantity'] = df['Quantity '].str.replace('--','0').astype(float)
+df['Quantity'] = df['Quantity '].str.replace('--', '0').astype(float)
 df['Price'] = df['Price'].replace('[\$,%-]', '', regex=True)
-df['Price'] = pd.to_numeric(df['Price'], errors='coerce') #changed to handle empty strings
+df['Price'] = pd.to_numeric(df['Price'], errors='coerce') # Handle empty strings
 df['Total'] = df['Total'].replace('[\$,%-]', '', regex=True)
-df['Total'] = pd.to_numeric(df['Total'], errors='coerce') #changed to handle empty strings
+df['Total'] = pd.to_numeric(df['Total'], errors='coerce') # Handle empty strings
 
-app = Dash(__name__)
+app = dash.Dash(__name__)
+server = app.server
 
-server=app.server
 # Layout of the dashboard
 app.layout = html.Div([
     html.H1("Retailer and Location Sales Dashboard"),
@@ -109,3 +107,5 @@ def update_output(selected_retailer, selected_location, selected_year, selected_
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
