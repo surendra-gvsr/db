@@ -16,7 +16,7 @@ from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
 
 # Direct link to the raw CSV file on GitHub
-file_path = "https://raw.githubusercontent.com/surendra-gvsr/db/main/Quari.csv"
+file_path = "https://github.com/surendra-gvsr/db/blob/main/Quari.csv"
 df = pd.read_csv(file_path, error_bad_lines=False)
 
 # Clean and preprocess data
