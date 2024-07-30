@@ -18,7 +18,8 @@ from dash import Dash, dcc, html, dash_table # import the dash module
 from dash.dependencies import Input, Output
 current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, 'Excell Files', 'Quari.csv')
-df = pd.read_csv("file_path")
+print(file_path)
+df = pd.read_csv(file_path)
 
 df = df[df['Area'] != 'Not Found']
 
